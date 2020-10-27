@@ -106,3 +106,15 @@ show_metrics()
 # 计算精确确率，召回率，阈值用于可视化
 precision, recall, thresholds = precision_recall_curve(test_y, score_y)
 plot_precision_recall()
+
+#SVM回归分类
+from sklearn import svm
+model=svm.LinearSVC()
+model.fit(train_x,train_y)
+predict_y2=model.predict(test_x)
+
+# 计算混淆矩阵，并显示
+cm2 = confusion_matrix(test_y, predict_y2)
+class_names = [0,1]
+# 显示混淆矩阵
+plot_confusion_matrix(cm, classes = class_names, title = 'SVM 混淆矩阵')
